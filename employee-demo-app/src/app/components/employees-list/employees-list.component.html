@@ -1,0 +1,28 @@
+<h2>List of Employees</h2>
+
+
+<table class="table table-bordered">
+    <thead>
+       <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Employee Email</th>
+        <th>Employee Salary</th>
+        <th>Actions</th>
+       </tr> 
+    </thead>
+    <tbody>
+        @for (employee of employees; track employee.id) {
+            <tr>
+                <td>{{employee.id}}</td>
+                <td>{{employee.empName}}</td>
+                <td>{{employee.empEmail}}</td>
+                <td>{{employee.empSalary}}</td>
+                <td>
+                    <a [routerLink]="['/employees/', employee.id]" class="btn btn-warning m-2">Edit</a>
+                    <button (click)="handleDelete(employee.id!)" class="btn btn-danger m-2">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

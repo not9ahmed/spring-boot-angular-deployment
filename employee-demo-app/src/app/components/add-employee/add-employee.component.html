@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6">
+        <h2>Add Employee</h2>
+        <form [formGroup]="employeeForm" (ngSubmit)="handleSubmit()">
+            <div class="mb-2">
+                <label class="form-label">Employee Name</label>
+                <input type="text" formControlName="empName" class="form-control" placeholder="Enter employee name">
+                <div class="text-danger" *ngIf="empName.invalid && empName.touched">
+                    <p *ngIf="empName.hasError('required')">Name is required</p>
+                    <p *ngIf="empName.hasError('minlength')">Name is required</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Employee Email</label>
+                <input type="text" formControlName="empEmail" class="form-control" placeholder="Enter employee email">
+                <div class="text-danger" *ngIf="empEmail.invalid && empEmail.touched">
+                    <p *ngIf="empEmail.hasError('required')">Email is required</p>
+                    <p *ngIf="empEmail.hasError('email')">Email is invalid</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Employee Salary</label>
+                <input type="text" formControlName="empSalary" class="form-control" placeholder="Enter employee salary">
+                <div class="text-danger" *ngIf="empSalary.invalid && empSalary.touched">
+                    <p *ngIf="empSalary.hasError('required')">Salary is required</p>
+                    <p *ngIf="empSalary.hasError('minlength')">Salary should not be 0</p>
+                </div>
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-success" [disabled]="employeeForm.invalid">Add Employee</button>
+
+                <div class="text-success">{{successMessage}}</div>
+                <div class="text-danger">{{errorMessage}}</div>
+            </div>
+        </form>
+    </div>
+</div>
